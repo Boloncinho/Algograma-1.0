@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cuestionario de Dolor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    p {
+      color: #666;
+      text-align: center;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #333;
+      margin-top: 20px;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .result {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    function mostrarResultado() {
+      // Obtener las respuestas seleccionadas
+      var intensidadDolor = document.getElementById('intensidad-dolor').value;
+      var frecuenciaDolor = document.getElementById('frecuencia-dolor').value;
+      var consumoAnalgésicos = document.getElementById('consumo-analgesicos').value;
+      var incapacidad = document.getElementById('incapacidad').value;
+      var horasSueño = document.getElementById('horas-sueño').value;
+      var medicaciónDormir = document.getElementById('medicacion-dormir').value;
+
+      // Asignar puntos a cada respuesta
+      var puntaje = 0;
+      switch (intensidadDolor) {
+        case 'Nulo':
+          puntaje += 0;
+          break;
+        case 'Ligero':
+          puntaje += 1;
+          break;
+        case 'Molesto':
+          puntaje += 2;
+          break;
+        case 'Intenso':
+          puntaje += 3;
+          break;
+        case 'Insoportable':
+          puntaje += 4;
+          break;
+      }
+
+      switch (frecuenciaDolor) {
+        case 'No':
+          puntaje += 0;
+          break;
+        case 'Raramente':
+          puntaje += 1;
+          break;
+        case 'Frecuente':
+          puntaje += 2;
+          break;
+        case 'Muy frecuente':
+          puntaje += 3;
+          break;
+        case 'Continuo':
+          puntaje += 4;
+          break;
+      }
+
+      switch (consumoAnalgésicos) {
+        case 'No toma':
+          puntaje += 0;
+          break;
+        case 'Ocasionalmente':
+          puntaje += 1;
+          break;
+        case 'Pocos':
+          puntaje += 2;
+          break;
+        case 'Muchos':
+          puntaje += 3;
+          break;
+        case 'Muchísimos':
+          puntaje += 4;
+          break;
+      }
+
+      switch (incapacidad) {
+        case 'No':
+          puntaje += 0;
+          break;
+        case 'Ligera':
+          puntaje += 1;
+          break;
+        case 'Moderada':
+          puntaje += 2;
+          break;
+        case 'Ayuda necesaria':
+          puntaje += 3;
+          break;
+        case 'Total':
+          puntaje += 4;
+          break;
+      }
+
+      switch (horasSueño) {
+        case 'Como siempre':
+          puntaje += 0;
+          break;
+        case 'Algo peor de lo habitual':
+          puntaje += 1;
+          break;
+        case 'Se despierta frecuentemente':
+          puntaje += 2;
+          break;
+        case 'Menos de 4 horas':
+          puntaje += 3;
+          break;
+      }
+
+      switch (medicaciónDormir) {
+        case 'no':
+          puntaje += 0;
+          break;
+        case 'si':
+          puntaje += 1;
+          break;
+      }
+
+      // Mostrar el resultado
+      var resultadoElement = document.getElementById('resultado');
+      resultadoElement.textContent = 'Puntuación obtenida: ' + puntaje;
+    }
+  </script>
+</head>
+<body>
+  <h1>Cuestionario de Dolor</h1>
+  <p>Para una correcta evaluación de su problema de salud, por favor complete estas preguntas. ¡Gracias!</p>
+
+  <form id="cuestionario">
+    <h2>Intensidad del dolor</h2>
+    <select id="intensidad-dolor">
+      <option value="Nulo">Nulo</option>
+      <option value="Ligero">Ligero</option>
+      <option value="Molesto">Molesto</option>
+      <option value="Intenso">Intenso</option>
+      <option value="Insoportable">Insoportable</option>
+    </select>
+
+    <h2>Frecuencia del dolor</h2>
+    <select id="frecuencia-dolor">
+      <option value="No">No</option>
+      <option value="Raramente">Raramente</option>
+      <option value="Frecuente">Frecuente</option>
+      <option value="Muy frecuente">Muy frecuente</option>
+      <option value="Continuo">Continuo</option>
+    </select>
+
+    <h2>Consumo de analgésicos</h2>
+    <select id="consumo-analgesicos">
+      <option value="No toma">No toma</option>
+      <option value="Ocasionalmente">Ocasionalmente</option>
+      <option value="Pocos">Pocos</option>
+      <option value="Muchos">Muchos</option>
+      <option value="Muchísimos">Muchísimos</option>
+    </select>
+
+    <h2>Incapacidad</h2>
+    <select id="incapacidad">
+      <option value="No">No</option>
+      <option value="Ligera">Ligera</option>
+      <option value="Moderada">Moderada</option>
+      <option value="Ayuda necesaria">Ayuda necesaria</option>
+      <option value="Total">Total</option>
+    </select>
+
+    <h2>Horas de sueño</h2>
+    <select id="horas-sueño">
+      <option value="Como siempre">Como siempre</option>
+      <option value="Algo peor de lo habitual">Algo peor de lo habitual</option>
+      <option value="Se despierta frecuentemente">Se despierta frecuentemente</option>
+      <option value="Menos de 4 horas">Menos de 4 horas</option>
+    </select>
+
+    <h2>Precisa medicación para dormir</h2>
+    <select id="medicacion-dormir">
+      <option value="no">No</option>
+      <option value="si">Sí</option>
+    </select>
+
+    <button type="button" onclick="mostrarResultado()">Calcular Puntuación</button>
+  </form>
+
+  <div id="resultado" class="result"></div>
+</body>
+</html>
